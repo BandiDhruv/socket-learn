@@ -13,8 +13,12 @@
         {
             document.write(data.data)
         })
-        */
         socket.emit("myCustomEventFromClientSide","A custom message from client side");
+        */
+        socket.on("newUserConnected",function(data){
+            document.body.innerHTML = ""
+            document.write(data.message)
+        })
     </script>
 </body>
 </html>
