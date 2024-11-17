@@ -19,9 +19,13 @@
             document.body.innerHTML = ""
             document.write(data.message)
         })
-        */
         socket.on('testEvent',function(data){
             document.write(data);
+        })
+        */
+        socket.on('connectedRoom',function(data){
+            document.body.innerHTML=""
+            document.write("hi"+data)
         })
     </script>
 </body>

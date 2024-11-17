@@ -40,11 +40,21 @@ var users=0;
 //     })
 // })
 
-var cnsp = io.of('/custom-namespace')
+// var cnsp = io.of('/custom-namespace')
+var roommno=1;
+var cnt=0;
 
-cnsp.on('connection',function(socket){
+
+io.on('connection',function(socket){
+    cnt++;
     console.log("A user Connected");
-    cnsp.emit('testEvent',"Tester Event Called");
+    if(cnt>=2){
+        cnt=0;
+        roommno++;
+    }
+    // io.emit('testEvent',"Tester Event Called");
+    socket.join("room - "+ roommno);
+    io.sockets.in("room - "+ roommno).emit('connectedRoom',"you are connected to room no" + roommno);
     socket.on('disconnect',function(){
         console.log("A user Disconnected");
     })
