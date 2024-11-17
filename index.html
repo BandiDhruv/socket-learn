@@ -9,15 +9,19 @@
     <script>
         var socket = io()
         /*
+        var socket1 = io('/custom-namespace')
         socket.on('myCustomEvent',function(data)
         {
             document.write(data.data)
         })
         socket.emit("myCustomEventFromClientSide","A custom message from client side");
-        */
         socket.on("newUserConnected",function(data){
             document.body.innerHTML = ""
             document.write(data.message)
+        })
+        */
+        socket.on('testEvent',function(data){
+            document.write(data);
         })
     </script>
 </body>
